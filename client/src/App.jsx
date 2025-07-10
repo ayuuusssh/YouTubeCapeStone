@@ -33,7 +33,7 @@ const AppContent = () => {
     <>
       <Header
         user={user}
-        setUser={setUser} // ✅ Passing for logout
+        setUser={setUser} 
         onToggleSidebar={() => setIsSidebarMini((prev) => !prev)}
       />
       <div className="flex">

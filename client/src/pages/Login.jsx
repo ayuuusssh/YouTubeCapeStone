@@ -11,11 +11,11 @@ const Login = ({ setUser }) => {
       const res = await axios.post('/api/auth/login', formData);
       const token = res.data.token;
 
-      // ✅ Save token in localStorage
+      // Save token in localStorage
       localStorage.setItem('token', token);
       localStorage.setItem('user', JSON.stringify(res.data.user));
 
-      // ✅ Apply token to axios globally
+      // Apply token to axios globally
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
       setUser(res.data.user);

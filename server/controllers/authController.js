@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const Channel = require('../models/Channel'); // ✅ Import channel
 
-// 📌 REGISTER
+// REGISTER
 exports.register = async (req, res) => {
   try {
     const { username, email, password, avatar } = req.body;
@@ -29,7 +29,7 @@ exports.register = async (req, res) => {
       expiresIn: '7d',
     });
 
-    // ✅ Try to fetch any existing channel (edge case)
+    // Try to fetch any existing channel (edge case)
     const channel = await Channel.findOne({ owner: newUser._id });
 
     res.status(201).json({
@@ -48,7 +48,7 @@ exports.register = async (req, res) => {
   }
 };
 
-// 📌 LOGIN
+// LOGIN
 exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -68,7 +68,7 @@ exports.login = async (req, res) => {
       expiresIn: '7d',
     });
 
-    // ✅ Also send channel data if it exists
+    // Also send channel data if it exists
     const channel = await Channel.findOne({ owner: user._id });
 
     res.json({

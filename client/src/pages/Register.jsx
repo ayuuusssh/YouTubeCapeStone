@@ -11,11 +11,11 @@ const Register = ({ setUser }) => {
       const res = await axios.post('/api/auth/register', formData);
       const token = res.data.token;
 
-      // ✅ Save token and user
+      // Save token and user
       localStorage.setItem('token', token);
       localStorage.setItem('user', JSON.stringify(res.data.user));
 
-      // ✅ Set global axios token
+      // Set global axios token
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
       setUser(res.data.user);

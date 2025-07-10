@@ -38,8 +38,8 @@ const CreateChannel = () => {
           setHasChannel(false);
         }
       } catch (err) {
-        console.warn('🟠 No channel found:', err.response?.data || err.message);
-        setHasChannel(false); // No channel means we can proceed to form
+        console.warn('No channel found:', err.response?.data || err.message);
+        setHasChannel(false); 
       } finally {
         setLoading(false);
       }
@@ -58,7 +58,7 @@ const CreateChannel = () => {
       await axios.post('/api/channels', formData);
       navigate('/channel');
     } catch (err) {
-      console.error('❌ Create channel error:', err.response?.data || err.message);
+      console.error('Create channel error:', err.response?.data || err.message);
       alert(`Failed to create channel: ${err.response?.data?.error || err.message}`);
     }
   };
